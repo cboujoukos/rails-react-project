@@ -3,6 +3,15 @@ import Letter from './Letter';
 import Timer from './Timer';
 
 class Game extends Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      status: 'new', //new, playing, complete
+      timeRemaining: this.props.initialSeconds,
+      usedLetters: []
+    }
+  }
   render(){
     return(
       <div className="game-board">
@@ -15,7 +24,7 @@ class Game extends Component{
         </div>
         <input type="text" className="answer" />
         <div className="game-footer">
-          <Timer />
+          <Timer timeRemaining={this.state.timeRemaining} />
           <div className="start-button">
             <button>Start</button>
           </div>
